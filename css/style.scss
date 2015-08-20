@@ -1,0 +1,158 @@
+/*********************************************************** Fonts **************************************************************/
+
+/*************************************** dolce vita ************************************/
+
+/* dolce vita bold */
+@font-face {
+    font-family: 'dolce_vita_heavyafewXpounds';
+    src: url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.svg#dolce_vita_heavyafewXpounds') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* dolce vita light */
+@font-face {
+    font-family: 'dolce_vita_lightsuper_light';
+    src: url('../fonts/dolce_vita/dolce_vita_light-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.svg#dolce_vita_lightsuper_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*dolce vita regular*/
+@font-face {
+    font-family: 'dolce_vitaquite_regular';
+    src: url('../fonts/dolce_vita/dolce_vita-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.svg#dolce_vitaquite_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**************************************** roboto ***********************************/
+
+/* roboto bold */
+@font-face {
+    font-family: 'robotobold';
+    src: url('../fonts/roboto/roboto-bold-webfont.eot');
+    src: url('../fonts/roboto/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-bold-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-bold-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-bold-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-bold-webfont.svg#robotobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* roboto light */
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/roboto/roboto-light-webfont.eot');
+    src: url('../fonts/roboto/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-light-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-light-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-light-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* roboto regular */
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto/roboto-regular-webfont.eot');
+    src: url('../fonts/roboto/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-regular-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-regular-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* roboto thin */
+@font-face {
+    font-family: 'robotothin';
+    src: url('../fonts/roboto/roboto-thin-webfont.eot');
+    src: url('../fonts/roboto/roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-thin-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-thin-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-thin-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-thin-webfont.svg#robotothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/************************************************************ Variables ************************************************************/
+
+/* Colors */
+$color-darkest: black;
+$color-lightest: white;
+
+/* fonts */
+$font-branding: dolce_vita_lightsuper_light;
+$font-main: robotolight;
+
+/************************************************************** Basics **************************************************************/
+* {
+	font-family: $font-main;
+}
+
+a {
+	color: $color-darkest;
+
+	&:hover {
+		color: $color-darkest;
+		text-decoration: none;
+	}
+}
+
+/* Branding */
+.branding-head {
+	background-color: $color-darkest;
+	text-align: center;
+
+	a {
+		color: $color-lightest;
+		text-decoration: none;
+		font-family: $font-branding;
+	}
+}
+
+/* Navbar */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
