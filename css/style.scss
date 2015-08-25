@@ -97,19 +97,55 @@
     font-style: normal;
 }
 
-/************************************************************ Variables ************************************************************/
+//************************************************************ Variables ************************************************************
 
-/* Colors */
+// Colors
 $color-darkest: black;
 $color-lightest: white;
 
-/* fonts */
-$font-branding: dolce_vita_lightsuper_light;
+// Fonts
+$font-head: dolce_vita_lightsuper_light;
 $font-main: robotolight;
+$font-thin: robotothin;
+
+//************************************************************** Mixins *************************************************************
+
+// Browser
+@mixin transition ($pices, $time, $kind) {
+    -webkit-transition: $pices, $time, $kind;
+       -moz-transition: $pices, $time, $kind;
+        -ms-transition: $pices, $time, $kind;
+         -o-transition: $pices, $time, $kind;
+            transition: $pices, $time, $kind;
+}
+
+@mixin transform ($translate) {
+    -webkit-transform: $translate;
+       -moz-transform: $translate;
+        -ms-transform: $translate;
+         -o-transform: $translate;
+            transform: $translate;
+}
+
+@mixin filter ($filter) {
+    -webkit-filter: $filter;
+       -moz-filter: $filter;
+        -ms-filter: $filter;
+         -o-filter: $filter;
+            filter: $filter;
+}
 
 /************************************************************** Basics **************************************************************/
 * {
 	font-family: $font-main;
+}
+
+html, body {
+    height: 100%;
+}
+
+.row {
+    margin: 0px;
 }
 
 a {
@@ -121,6 +157,7 @@ a {
 	}
 }
 
+
 /* Branding */
 .branding-head {
 	background-color: $color-darkest;
@@ -129,13 +166,126 @@ a {
 	a {
 		color: $color-lightest;
 		text-decoration: none;
-		font-family: $font-branding;
+		font-family: $font-head;
 	}
 }
 
 /* Navbar */
 
 
+/* Headline */
+.headline {
+    div {
+        height: 1px;
+        background-color: $color-darkest;
+        text-align: center;
+
+        span {
+            background-color: $color-lightest;
+            position: relative;
+            top: -0.72em;
+            padding: 0.5em;
+            font: {
+                family: $font-thin;
+                size: 2.5em;
+            }
+            text-transform: uppercase;
+        }
+    }
+}
+
+/* Slideshow */
+
+
+/* Box */
+
+
+/* Gallery */
+.gallery-container {
+    .col {
+        padding: 0;
+    }
+
+    .outer-content {
+        height: 100%;
+        margin: 1em;
+        position: relative;
+        background: {
+            color: $color-darkest;
+            repeat: no-repeat;
+        }
+        overflow: hidden;
+
+        &:hover .caption {
+            opacity: 1;
+            @include transform (translateY(-7em));
+            }
+
+        &:hover img {
+            opacity: 0.77;
+            @include transform (translateY(-2em));
+        }
+
+        .caption {
+            width: 100%;
+            height: 30em;
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            @include transition (all, 0.15s, ease-in-out);
+        }
+
+        img {
+            width: 100%;
+            @include transition (all, 0.15s, ease-in-out);
+        }
+
+        .blur {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(142, 68, 173, 1);
+            z-index: 5;
+            position: absolute;
+        }
+
+        .caption-text {
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            color: #fff;
+            position: absolute;
+            text-align: center;
+            padding: 0 0.4em 0 0.4em;
+
+            h3 {
+                text-transform: uppercase;
+                font-size: 18px;
+                margin-top: 1em 0 0.4em 0;
+            }
+        }
+    }
+}
+
+/* Footer */
+#footer {
+    width: 100%;
+    background: {
+        color: $color-lightest;
+        position: 0% 0%;
+    }
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    margin-top: 1em;
+
+    a {
+        margin: {
+            left: 1em;
+            right: 1em;
+        }
+    }
+}
 
 
 
