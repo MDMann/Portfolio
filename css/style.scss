@@ -102,6 +102,7 @@
 // Colors
 $color-darkest: black;
 $color-lightest: white;
+$color-accent: rgba(142, 68, 173, 1);
 
 // Fonts
 $font-head: dolce_vita_lightsuper_light;
@@ -111,6 +112,7 @@ $font-thin: robotothin;
 //************************************************************** Mixins *************************************************************
 
 // Browser
+
 @mixin transition ($pices, $time, $kind) {
     -webkit-transition: $pices, $time, $kind;
        -moz-transition: $pices, $time, $kind;
@@ -136,6 +138,7 @@ $font-thin: robotothin;
 }
 
 /************************************************************** Basics **************************************************************/
+
 * {
 	font-family: $font-main;
 }
@@ -148,17 +151,59 @@ html, body {
     margin: 0px;
 }
 
-a {
-	color: $color-darkest;
+/******************************** Links *****************************/
 
-	&:hover {
-		color: $color-darkest;
-		text-decoration: none;
-	}
+a {
+  color: $color-accent;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+  @include transition (all, .3s, linear);
+
+    &:hover {
+        color: $color-darkest;
+        text-decoration: none;
+    }
+
+    &:before, &:after {
+        content: '';
+        background: $color-accent;
+        position: absolute;
+        width: 0;
+        height: 2px;
+        @include transition (all, .3s, linear);
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+    }
+
+    &:after {
+        top: 100%;
+        right: 0;
+    }
+
+    &:hover:before, &:hover:after {
+        width: 100%;
+    }
 }
 
+.no-hover {
+    &:before, &:after {
+    background: none;
+    }
+}
 
-/* Branding */
+.thinner-hover {
+    &:before, &:after {
+    height: 1px;
+    }
+}
+
+/****************************** Branding *************************/
+
 .branding-head {
 	background-color: $color-darkest;
 	text-align: center;
@@ -170,10 +215,11 @@ a {
 	}
 }
 
-/* Navbar */
+/******************************* Navbar **************************/
 
 
-/* Headline */
+/****************************** Headline *************************/
+
 .headline {
     div {
         height: 1px;
@@ -194,13 +240,14 @@ a {
     }
 }
 
-/* Slideshow */
+/***************************** Slideshow ************************/
 
 
-/* Box */
+/******************************** Box ***************************/
 
 
-/* Gallery */
+/****************************** Gallery *************************/
+
 .gallery-container {
     .col {
         padding: 0;
@@ -232,18 +279,18 @@ a {
             cursor: pointer;
             position: absolute;
             opacity: 0;
-            @include transition (all, 0.15s, ease-in-out);
+            @include transition (all, 0.25s, ease-in-out);
         }
 
         img {
             width: 100%;
-            @include transition (all, 0.15s, ease-in-out);
+            @include transition (all, 0.2s, ease-in-out);
         }
 
         .blur {
             width: 100%;
             height: 100%;
-            background-color: rgba(142, 68, 173, 1);
+            background-color: $color-accent;
             z-index: 5;
             position: absolute;
         }
@@ -266,7 +313,7 @@ a {
     }
 }
 
-/* Footer */
+/**************************** Footer *************************/
 #footer {
     width: 100%;
     background: {
@@ -277,7 +324,7 @@ a {
     bottom: 0;
     left: 0;
     text-align: center;
-    margin-top: 1em;
+    margin: 1em 0 0.5em 0;
 
     a {
         margin: {
