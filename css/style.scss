@@ -145,6 +145,7 @@ $font-thin: robotothin;
 
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 .row {
@@ -244,6 +245,8 @@ a {
     text-transform: uppercase;
 
     .nav {
+        padding: 0;
+
         a {
             color: $color-accent;
             font: {
@@ -283,13 +286,17 @@ a {
     }
 
     .triangle {
-        width: 50%;
-        position: absolute;
-        margin-left: 25%;
-        border: {
-            top: 50px solid $color-darkest;
-            left: 60px solid transparent;
-            right: 60px solid transparent;
+            padding: 0;
+
+        div {
+            width: 120px;
+            position: absolute;
+            margin-left: 25%;
+            border: {
+                top: 50px solid $color-darkest;
+                left: 60px solid transparent;
+                right: 60px solid transparent;
+            }
         }
     }
 
@@ -376,7 +383,6 @@ a {
         }
 
         img {
-            width: 100%;
             @include transition (all, 0.2s, ease-in-out);
         }
 
@@ -407,6 +413,14 @@ a {
                 text-align: center;
             }
         }
+
+        // .img-width-100 {
+        //     width: 100%
+        // }
+
+        // .img-height-100 {
+        //     height: 100%;
+        // }
     }
 }
 

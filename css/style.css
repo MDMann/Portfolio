@@ -55,7 +55,8 @@
   font-family: robotolight; }
 
 html, body {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 .row {
   margin: 0px; }
@@ -131,34 +132,38 @@ a {
   margin-bottom: 3em;
   border: none;
   text-transform: uppercase; }
-  .navbar .nav a {
-    color: #8e44ad;
-    font-weight: normal;
-    font-size: 1.2em;
-    display: inline-block;
-    padding: 0.6em 0.6em 0.5em 0.6em; }
-    .navbar .nav a:hover {
-      color: black;
-      background-color: transparent; }
-    .navbar .nav a:before, .navbar .nav a:after {
-      background: black;
-      width: 100%;
-      height: 2px; }
-    .navbar .nav a:hover:before, .navbar .nav a:hover:after {
-      width: 0; }
-    .navbar .nav a:visited, .navbar .nav a:active, .navbar .nav a:focus {
-      background-color: transparent; }
+  .navbar .nav {
+    padding: 0; }
+    .navbar .nav a {
+      color: #8e44ad;
+      font-weight: normal;
+      font-size: 1.2em;
+      display: inline-block;
+      padding: 0.6em 0.6em 0.5em 0.6em; }
+      .navbar .nav a:hover {
+        color: black;
+        background-color: transparent; }
+      .navbar .nav a:before, .navbar .nav a:after {
+        background: black;
+        width: 100%;
+        height: 2px; }
+      .navbar .nav a:hover:before, .navbar .nav a:hover:after {
+        width: 0; }
+      .navbar .nav a:visited, .navbar .nav a:active, .navbar .nav a:focus {
+        background-color: transparent; }
   .navbar .nav-link {
     margin-top: 1.5em; }
   .navbar .nav-right {
     text-align: right; }
   .navbar .triangle {
-    width: 50%;
-    position: absolute;
-    margin-left: 25%;
-    border-top: 50px solid black;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent; }
+    padding: 0; }
+    .navbar .triangle div {
+      width: 120px;
+      position: absolute;
+      margin-left: 25%;
+      border-top: 50px solid black;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent; }
   .navbar .active a {
     cursor: default; }
     .navbar .active a:hover:before, .navbar .active a:hover:after {
@@ -221,7 +226,6 @@ a {
     -o-transition: all, 0.25s, ease-in-out;
     transition: all, 0.25s, ease-in-out; }
   .gallery-container .outer-content img {
-    width: 100%;
     -webkit-transition: all, 0.2s, ease-in-out;
     -moz-transition: all, 0.2s, ease-in-out;
     -ms-transition: all, 0.2s, ease-in-out;
