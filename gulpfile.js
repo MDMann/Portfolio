@@ -132,7 +132,6 @@ gulp.task('compile-sass', function() {
 gulp.task('copy-assets', function () {
 
     var source = [gulp.src(ASSETS.fonts, { base: 'assets' }),
-                  gulp.src(ASSETS.html, { base: 'assets' }),
                   gulp.src(ASSETS.images, { base: 'assets' }),
                   gulp.src(ASSETS.jsPost, { base: 'assets' })];
     var targetPath = PATH.output;
@@ -166,29 +165,53 @@ gulp.task('copy-dependencies', function () {
 
 gulp.task('inject-index', function () {
 
-    var sourceFile = gulp.src(FILE.index); // index.html source file containing injection comments
-    var targetPath = PATH.output; // index.html target file where file references will be injected
+    var sourceCssVendor = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['**/*.css']));
+    var sourceCss       = gulp.src(BUILD.css + BUILD.cssFile, { read: false }); 
+    var sourceJsPre     = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['modernizr.js']));
+    var sourceJsVendor  = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['**/*.js', '!modernizr.js']));
+    var sourceJs        = gulp.src(ASSETS.jsPost);
 
+    var source = gulp.src(FILE.index); // index.html source file containing injection comments
+    var targetPath = PATH.output; // target path where index.html file will be copied to
+    
     if (env === 'development') {
-        
-        var sourceCssVendor = gulp.src(DEPENDENCIES, { read: false })
-            .pipe(plugins.filter(['**/*.css']))
-        ;
-        var sourceCss = gulp.src(BUILD.css + BUILD.cssFile, { read: false }); // compile-sass has to be run before
-        var sourceJsPre = gulp.src(DEPENDENCIES, { read: false })
-            .pipe(plugins.filter(['modernizr.js']))
-        ;
-        var sourceJsVendor = gulp.src(DEPENDENCIES, { read: false })
-            .pipe(plugins.filter(['**/*.js', '!modernizr.js']))
-        ;
-        var sourceJs = gulp.src(ASSETS.jsPost);
-
-        return sourceFile
+    
+        return source
+            .pipe(plugins.changed(targetPath))
             .pipe(plugins.inject(sourceCssVendor, { name: 'vendor', relative: false, addRootSlash: false  }))
             .pipe(plugins.inject(sourceCss, { relative: true, ignorePath: '.' + PATH.output }))
             .pipe(plugins.inject(sourceJsPre, { name: 'pre', relative: false, addRootSlash: false  }))
             .pipe(plugins.inject(sourceJsVendor, { name: 'vendor', relative: false, addRootSlash: false }))
             .pipe(plugins.inject(sourceJs, { relative: false }))
+            .pipe(gulp.dest(targetPath))
+        ;
+    }
+});
+
+// ---------------------------------------------------------------------------
+// inject-pages - Inject css and javascript file references into index.html [TESTED]
+// ---------------------------------------------------------------------------
+
+gulp.task('inject-pages', function () {
+
+    var sourceCssVendor = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['**/*.css']));
+    var sourceCss       = gulp.src(BUILD.css + BUILD.cssFile, { read: false }); 
+    var sourceJsPre     = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['modernizr.js']));
+    var sourceJsVendor  = gulp.src(DEPENDENCIES, { read: false }).pipe(plugins.filter(['**/*.js', '!modernizr.js']));
+    var sourceJs        = gulp.src(ASSETS.jsPost);
+
+    var source = gulp.src(ASSETS.html); // html source files containing injection comments
+    var targetPath = BUILD.html; // target path where html files will be copied to
+
+    if (env === 'development') {
+    
+        return source
+            .pipe(plugins.changed(targetPath))
+            .pipe(plugins.inject(sourceCssVendor, { name: 'vendor', relative: true, ignorePath: '../' }))
+            .pipe(plugins.inject(sourceCss, { relative: false, ignorePath: 'builds/development/', addRootSlash: false, addPrefix: '..' }))
+            .pipe(plugins.inject(sourceJsPre, { name: 'pre', relative: true, ignorePath: '../' }))
+            .pipe(plugins.inject(sourceJsVendor, { name: 'vendor', relative: true, ignorePath: '../' }))
+            .pipe(plugins.inject(sourceJs, { relative: true }))
             .pipe(gulp.dest(targetPath))
         ;
     }
@@ -216,7 +239,7 @@ gulp.task('browsersync', function(callback) {
 
 gulp.task('observe', function() {
     gulp.watch(FILE.index, gulp.series('inject-index', browsersync.reload));
-    gulp.watch(ASSETS.html, gulp.series('copy-assets', browsersync.reload));
+    gulp.watch(ASSETS.html, gulp.series('inject-pages', browsersync.reload));
     gulp.watch([SASS.root, SASS.partials], gulp.series('compile-sass', browsersync.reload));
     gulp.watch([ASSETS.jsPre, ASSETS.jsPost], gulp.series('copy-assets', browsersync.reload));
     gulp.watch(ASSETS.fonts, gulp.series('copy-assets', browsersync.reload));
@@ -235,7 +258,7 @@ gulp.task('clean', function(callback) {
 // build - Clean build directory, install packages and process files
 // ---------------------------------------------------------------------------
 
-gulp.task('build', gulp.series('clean', gulp.parallel('compile-sass', 'copy-assets', 'copy-dependencies'), 'inject-index'));
+gulp.task('build', gulp.series('clean', gulp.parallel('compile-sass', 'copy-assets', 'copy-dependencies'), gulp.parallel('inject-index', 'inject-pages')));
 
 // ---------------------------------------------------------------------------
 // watch - Watch for changes and sync browsers
