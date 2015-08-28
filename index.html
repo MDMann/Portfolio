@@ -40,17 +40,28 @@
     </div>
 
 <!--************************************************************** Navbar ************************************************************-->
-    <section class="navbar row">
-        <ul class="nav navbar-nav col col-sm-12">
-          <li class="col col-md-2 col-md-offset-1 col-sm-2 col-xs-12 nav-link nav-right dropdown"><a href="gallery.html" class="dropdown-toggle" data-toggle="dropdown">What I do</a></li>
-          <li class="col col-sm-2 col-xs-12 nav-link nav-right"><a href="about-me.html">Who I am</a></li>
+    <section class="navbar">
+        <ul class="nav navbar-nav row">
 
-          <li class="col col-md-2 col-sm-4 col-xs-12 triangle">
-            <div></div>
+          <li class="col col-sm-2 col-sm-offset-1 nav-link nav-right dropdown">
+            <a href="gallery.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">What I do <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="no-hover">Photography</a></li>
+                <li><a href="#" class="no-hover">Photomanipulation</a></li>
+                <li><a href="#" class="no-hover">Drawings</a></li>
+              </ul>
           </li>
+          <li class="col col-sm-2 nav-link nav-right"><a href="about-me.html">Who I am</a></li>
 
-          <li class="col col-sm-2 col-xs-12 nav-link"><a href="blog.html">What I share</a></li>
-          <li class="col col-sm-2 col-xs-12 nav-link"><a href="contact.html">How to contact</a></li>
+          <div class="col col-sm-2 triangle-col">
+            <div class="row">
+              <div class="col col-sm-10 col-sm-offset-1 triangle">
+              </div>
+            </div>
+          </div>
+
+          <li class="col col-sm-2 nav-link"><a href="blog.html">What I share</a></li>
+          <li class="col col-sm-2 nav-link"><a href="contact.html">How to contact</a></li>
         </ul>
     </section>
 
@@ -81,10 +92,10 @@
 
 <!--************************************************************** Gallery ***********************************************************-->
   <div class="gallery-container row">
-    <div class="col col-lg-8 col-lg-offset-2 col-md-19 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="col col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1">
       <div class="row">
 
-        <div class="col col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="col col-lg-4 col-md-4 col-xs-6">
           <a href="#" class="no-hover">
             <div class="outer-content">
               <img src="img/1526510_657697967602718_321060540_n.jpg" class="img-responsive img-width-100">
@@ -99,7 +110,7 @@
           </a>
         </div>
 
-        <div class="col col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="col col-lg-4 col-md-4 col-xs-6">
           <a href="#" class="no-hover">
             <div class="outer-content">
               <img src="img/ghost-girl.jpg" class="img-responsive img-height-100">
@@ -114,7 +125,7 @@
           </a>
         </div>
 
-        <div class="col col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="col col-lg-4 col-md-4 col-xs-6">
           <a href="#" class="no-hover">
             <div class="outer-content">
               <img src="img/1526510_657697967602718_321060540_n.jpg" class="img-responsive img-width-100">
@@ -136,7 +147,7 @@
 <!--************************************************************* Footer *************************************************************-->
   <div id="footer">
     <footer class="row">
-      <div class="col col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+      <div class="col col-xs-12">
         <a href="site-notice.html">Site notice</a>
         <a href="#">twitter</a>
         <a href="#">facebook</a>
@@ -150,6 +161,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   </body>
 </html>

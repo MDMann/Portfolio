@@ -240,12 +240,13 @@ a {
 /******************************* Navbar **************************/
 
 .navbar {
-    margin-bottom: 3em;
+    margin-bottom: 3.2em;
     border: none;
     text-transform: uppercase;
 
     .nav {
         padding: 0;
+        float: none;
 
         a {
             color: $color-accent;
@@ -285,18 +286,31 @@ a {
         text-align: right;
     }
 
-    .triangle {
-            padding: 0;
+    .triangle-col {
+        padding: 0;
 
-        div {
-            width: 120px;
+        .triangle {
             position: absolute;
-            margin-left: 25%;
             border: {
-                top: 50px solid $color-darkest;
-                left: 60px solid transparent;
-                right: 60px solid transparent;
+                top: 2em solid $color-darkest;
+                left: 2em solid transparent;
+                right: 2em solid transparent;
             }
+        }
+    }
+
+    .dropdown-menu {
+        left: 59%;
+        top: 120%;
+        border: none;
+        border-radius: 0;
+        a {
+            text-transform: none;
+
+            &:before, &:after {
+                background: transparent;
+                width: 0;
+            }  
         }
     }
 
@@ -314,7 +328,7 @@ a {
 /****************************** Headline *************************/
 
 .headline {
-    margin-bottom: 3em;
+    margin-bottom: 4em;
     div {
         height: 1px;
         background-color: $color-darkest;
@@ -343,6 +357,7 @@ a {
 .box {
     h3 {
         margin-top: 0;
+        color: $color-accent;
     }
 }
 
@@ -447,7 +462,20 @@ a {
     }
 }
 
+/*********************************************************** About Me **************************************************************/
 
+.content-about-me {
+    dl {
+        dt {
+            width: 100px;
+            font-weight: 700;
+        }
+
+        dd {
+            margin-left: 120px;
+        }
+    }
+}
 
 
 

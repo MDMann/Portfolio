@@ -104,12 +104,10 @@ a {
     color: #8e44ad; }
   a:active {
     color: black; }
-
-.no-hover:before, .no-hover:after {
-  background: none; }
-
-.thinner-hover:before, .thinner-hover:after {
-  height: 1px; }
+  a .no-hover a:before, a .no-hover a:after {
+    background: none; }
+  a .thinner-hover a:before, a .thinner-hover a:after {
+    height: 1px; }
 
 /****************************** Branding *************************/
 .branding-head {
@@ -160,19 +158,9 @@ a {
     padding: 0; }
     .navbar .triangle-col .triangle {
       position: absolute;
-      border-top: 2em solid black;
-      border-left: 2em solid transparent;
-      border-right: 2em solid transparent; }
-  .navbar .dropdown-menu {
-    left: 59%;
-    top: 120%;
-    border: none;
-    border-radius: 0; }
-    .navbar .dropdown-menu a {
-      text-transform: none; }
-      .navbar .dropdown-menu a:before, .navbar .dropdown-menu a:after {
-        background: transparent;
-        width: 0; }
+      border-top: 10px solid black;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent; }
   .navbar .active a {
     cursor: default; }
     .navbar .active a:hover:before, .navbar .active a:hover:after {
@@ -284,4 +272,4 @@ a {
 .content-about-me dl dd {
   margin-left: 120px; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style:css.map */
