@@ -60,6 +60,13 @@ This command will trigger a series of tasks, which will clean up your build fold
   - Verify installation: `scss-lint -v`
   - Update using [RubyGems](https://rubygems.org/): `gem update scss-lint`
 
+### Additional steps
+
+* [nodejs/npm](http://nodejs.org/)
+- Create package.json file: `npm init`
+- Create gulpfile.js `touch gulpfile.js`
+- npm install "gulpjs/gulp-cli#4.0" --save-dev
+
 ## <span id="install">Install</span>
 **Important Note**: You can skip this part when applying the QuickStart instructions.
 

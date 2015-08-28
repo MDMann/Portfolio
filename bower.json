@@ -1,0 +1,30 @@
+{
+  "name": "Portfolio",
+  "version": "0.0.1",
+  "homepage": "https://github.com/MDMann/Portfolio",
+  "authors": [
+    "michelle-mann@gmx.de"
+  ],
+  "description": "Personal homepage of Michelle Mann",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "homepage",
+    "personal",
+    "portfolio"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "modernizr": "~2.8.3"
+  }
+}
