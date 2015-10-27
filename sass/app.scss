@@ -1,0 +1,502 @@
+// ---------------------------------------------------------------------------
+// Import bootstrap styles
+// ---------------------------------------------------------------------------
+
+@import 'bootstrap';                        // Resides in bower_components
+
+/*********************************************************** Fonts **************************************************************/
+
+/*************************************** dolce vita ************************************/
+
+/* dolce vita bold */
+@font-face {
+    font-family: 'dolce_vita_heavyafewXpounds';
+    src: url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita_heavy_bold-webfont.svg#dolce_vita_heavyafewXpounds') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* dolce vita light */
+@font-face {
+    font-family: 'dolce_vita_lightsuper_light';
+    src: url('../fonts/dolce_vita/dolce_vita_light-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita_light-webfont.svg#dolce_vita_lightsuper_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*dolce vita regular*/
+@font-face {
+    font-family: 'dolce_vitaquite_regular';
+    src: url('../fonts/dolce_vita/dolce_vita-webfont.eot');
+    src: url('../fonts/dolce_vita/dolce_vita-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.woff2') format('woff2'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.woff') format('woff'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.ttf') format('truetype'),
+         url('../fonts/dolce_vita/dolce_vita-webfont.svg#dolce_vitaquite_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**************************************** roboto ***********************************/
+
+/* roboto bold */
+@font-face {
+    font-family: 'robotobold';
+    src: url('../fonts/roboto/roboto-bold-webfont.eot');
+    src: url('../fonts/roboto/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-bold-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-bold-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-bold-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-bold-webfont.svg#robotobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* roboto light */
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/roboto/roboto-light-webfont.eot');
+    src: url('../fonts/roboto/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-light-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-light-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-light-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* roboto regular */
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto/roboto-regular-webfont.eot');
+    src: url('../fonts/roboto/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-regular-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-regular-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* roboto thin */
+@font-face {
+    font-family: 'robotothin';
+    src: url('../fonts/roboto/roboto-thin-webfont.eot');
+    src: url('../fonts/roboto/roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto-thin-webfont.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-thin-webfont.woff') format('woff'),
+         url('../fonts/roboto/roboto-thin-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/roboto-thin-webfont.svg#robotothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+//************************************************************ Variables ************************************************************
+
+// Colors
+$color-darkest: black;
+$color-lightest: white;
+$color-accent: rgba(142, 68, 173, 1);
+
+// Fonts
+$font-head: dolce_vita_lightsuper_light;
+$font-main: robotolight;
+$font-thin: robotothin;
+
+//************************************************************** Mixins *************************************************************
+
+// Browser
+
+@mixin transition ($pices, $time, $kind) {
+    -webkit-transition: $pices, $time, $kind;
+       -moz-transition: $pices, $time, $kind;
+        -ms-transition: $pices, $time, $kind;
+         -o-transition: $pices, $time, $kind;
+            transition: $pices, $time, $kind;
+}
+
+@mixin transform ($translate) {
+    -webkit-transform: $translate;
+       -moz-transform: $translate;
+        -ms-transform: $translate;
+         -o-transform: $translate;
+            transform: $translate;
+}
+
+@mixin filter ($filter) {
+    -webkit-filter: $filter;
+       -moz-filter: $filter;
+        -ms-filter: $filter;
+         -o-filter: $filter;
+            filter: $filter;
+}
+
+/************************************************************** Basics **************************************************************/
+
+* {
+	font-family: $font-main;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.row {
+    margin: 0px;
+}
+
+p {
+    text-align: justify;
+}
+
+/******************************** Links *****************************/
+
+a {
+  color: $color-accent;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+  @include transition (all, .3s, ease-in-out);
+
+    &:hover {
+        color: $color-darkest;
+        text-decoration: none;
+    }
+
+    &:before, &:after {
+        content: '';
+        background: $color-accent;
+        position: absolute;
+        width: 0;
+        height: 2px;
+        @include transition (all, .3s, ease-in-out);
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+    }
+
+    &:after {
+        top: 100%;
+        right: 0;
+    }
+
+    &:hover:before, &:hover:after {
+        width: 100%;
+    }
+
+    &:visited, &:focus, &:active {
+        text-decoration: none;
+    }
+
+    &:focus {
+        color: $color-accent;
+    }
+
+    &:active {
+        color: $color-darkest;
+    }
+}
+
+.no-hover {
+    &:before, &:after {
+    background: none;
+    }
+}
+
+.thinner-hover {
+    &:before, &:after {
+    height: 1px;
+    }
+}
+
+/****************************** Branding *************************/
+
+.branding-head {
+	background-color: $color-darkest;
+	text-align: center;
+
+	a {
+		color: $color-lightest;
+		text-decoration: none;
+		font-family: $font-head;
+        @include transition (all, .2s, linear);
+
+        &:hover {
+            color: $color-accent;
+        }
+	}
+}
+
+/******************************* Navbar **************************/
+
+.navbar {
+    margin-bottom: 3.2em;
+    border: none;
+    text-transform: uppercase;
+
+    .nav {
+        padding: 0;
+        float: none;
+
+        a {
+            color: $color-accent;
+            font: {
+                weight: normal;
+                size: 1.2em;
+            }
+            display: inline-block;
+            padding: 0.6em 0.6em 0.5em 0.6em;
+
+            &:hover {
+                color: $color-darkest;
+                background-color: transparent;
+            }
+
+            &:before, &:after {
+                background: $color-darkest;
+                width: 100%;
+                height: 2px;
+            }  
+
+            &:hover:before, &:hover:after {
+                width: 0;
+            }
+
+            &:visited, &:active, &:focus {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .nav-link {
+        margin-top: 1.5em;
+    }
+
+    .nav-right {
+        text-align: right;
+    }
+
+    .triangle-col {
+        padding: 0;
+
+        .triangle {
+            position: absolute;
+            border: {
+                top: 2em solid $color-darkest;
+                left: 2em solid transparent;
+                right: 2em solid transparent;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        left: 59%;
+        top: 120%;
+        border: none;
+        border-radius: 0;
+        a {
+            text-transform: none;
+
+            &:before, &:after {
+                background: transparent;
+                width: 0;
+            }  
+        }
+    }
+
+    .active {
+        a {
+            cursor: default;
+
+            &:hover:before, &:hover:after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/****************************** Headline *************************/
+
+.headline {
+    margin-bottom: 4em;
+    div {
+        height: 1px;
+        background-color: $color-darkest;
+        text-align: center;
+
+        span {
+            background-color: $color-lightest;
+            position: relative;
+            top: -0.72em;
+            padding: 0 0.5em 0 0.5em;
+            font: {
+                family: $font-thin;
+                size: 2.5em;
+            }
+            text-transform: uppercase;
+        }
+    }
+}
+
+/***************************** Slideshow ************************/
+
+
+
+/******************************** Box ***************************/
+
+.box {
+    h3 {
+        margin-top: 0;
+        color: $color-accent;
+    }
+}
+
+/****************************** Gallery *************************/
+
+.gallery-container {
+    .col {
+        padding: 0;
+    }
+
+    .outer-content {
+        height: 100%;
+        margin: 1em;
+        position: relative;
+        background: {
+            color: $color-darkest;
+            repeat: no-repeat;
+        }
+        overflow: hidden;
+
+        &:hover .caption {
+            opacity: 1;
+            @include transform (translateY(-7em));
+            }
+
+        &:hover img {
+            opacity: 0.77;
+            @include transform (translateY(-2em));
+        }
+
+        .caption {
+            width: 100%;
+            height: 30em;
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            @include transition (all, 0.25s, ease-in-out);
+        }
+
+        img {
+            @include transition (all, 0.2s, ease-in-out);
+        }
+
+        .blur {
+            width: 100%;
+            height: 100%;
+            background-color: $color-accent;
+            z-index: 5;
+            position: absolute;
+        }
+
+        .caption-text {
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            color: #fff;
+            position: absolute;
+            text-align: center;
+            padding: 0 0.4em 0 0.4em;
+
+            h3 {
+                text-transform: uppercase;
+                font-size: 18px;
+                margin-top: 1em 0 0.4em 0;
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+
+        // .img-width-100 {
+        //     width: 100%
+        // }
+
+        // .img-height-100 {
+        //     height: 100%;
+        // }
+    }
+}
+
+/**************************** Footer *************************/
+
+#footer {
+    width: 100%;
+    background: {
+        color: $color-lightest;
+        position: 0% 0%;
+    }
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    margin: 1em 0 0.5em 0;
+
+    a {
+        padding: 0.3em;
+        margin: {
+            left: 1em;
+            right: 1em;
+        }
+    }
+}
+
+/*********************************************************** About Me **************************************************************/
+
+.content-about-me {
+    dl {
+        dt {
+            width: 100px;
+            font-weight: 700;
+        }
+
+        dd {
+            margin-left: 120px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
