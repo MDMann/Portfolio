@@ -2,7 +2,7 @@
 // gulpfile.js for Gulp 4.0
 // ===========================================================================
 
-env             = process.env.NODE_ENV || 'unprocessed';
+env             = process.env.NODE_ENV || 'local';
 
 browsersync     = require('browser-sync');
 del             = require('del');
@@ -14,10 +14,8 @@ PATH = {
     assets:         './assets/',
     bower:          './bower_components/',
     sass:           './sass/',
-    output:         './builds/unprocessed/'
+    output:         './builds/' + env + '/'
 };
-
-if (env === 'processed') {PATH.output = './builds/processed/'}
 
 FILE = {
     index:          './assets/index.html'
@@ -75,14 +73,26 @@ SASS = {
 // Require gulp tasks for definied environments
 // ---------------------------------------------------------------------------
 
-if (env === 'unprocessed') {var requireDir  = require('require-dir')('./gulp/tasks/unprocessed', { recurse: true });}
-if (env === 'processed') {var requireDir  = require('require-dir')('./gulp/tasks/processed', { recurse: true });}
+var requireBuild  = require('require-dir')('./gulp/tasks/' + env, { recurse: true });
+var requireShared = require('require-dir')('./gulp/tasks/shared', { recurse: true });
+
+// ---------------------------------------------------------------------------
+// lint - Lint HTML, Sass and JavaScript files
+// ---------------------------------------------------------------------------
+
+gulp.task('lint', gulp.parallel('lint-html5', 'lint-scss', 'lint-js'));
 
 // ---------------------------------------------------------------------------
 // build - Clean build directory, install packages and process files
 // ---------------------------------------------------------------------------
 
-gulp.task('build', gulp.series('clean', gulp.parallel('compile-sass', 'process-js', 'copy-assets')));
+if (env === 'local') {
+    gulp.task('build', gulp.series('clean', gulp.parallel('compile-sass', 'process-js-pre', 'process-js-post', 'copy-assets-fonts', 'copy-assets-html', 'copy-assets-images')));
+}
+
+if (env === 'deploy') {
+    gulp.task('build', gulp.series('clean', gulp.parallel(gulp.series('compile-sass', 'process-css'), 'process-js-pre', 'process-js-post', 'process-markup', 'process-images', 'copy-assets-fonts', 'copy-assets-html', 'copy-assets-images')));
+}
 
 // ---------------------------------------------------------------------------
 // watch - Watch for changes and sync browsers

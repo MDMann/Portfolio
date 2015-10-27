@@ -1,15 +1,15 @@
 'use strict';
 
 // ---------------------------------------------------------------------------
-// compile-sass - Compile Sass files and write CSS file to build directory
+// process-js-pre - Process pre scripts: concat
 // ---------------------------------------------------------------------------
 
-gulp.task('compile-sass', function() {
+gulp.task('process-js-pre', function() {
 
-    var source = gulp.src(SASS.root); // you can pipe additional instances here
-    var include = [SASS.framework]; // include paths to external sass files here, e.g. bootstrap or foundation
-    var targetFile = BUILD.cssFile;
-    var targetPath = BUILD.css;
+    var source = gulp.src(DEPENDENCIES); // gulp.src([ASSETS.jsPre]); // use customized version of modernizr}
+    var filterRule = ['modernizr.js'];
+    var targetFile = BUILD.jsFilePre;
+    var targetPath = BUILD.js;
 
     // ---------------------------------------------------------------------------
     // onError - Error helper function
@@ -33,11 +33,12 @@ gulp.task('compile-sass', function() {
     // ---------------------------------------------------------------------------
 
     return source
+        .pipe(plugins.filter(filterRule))
         .pipe(plugins.plumber({ errorHandler: onError }))
-        .pipe(plugins.sourcemaps.init())
-            .pipe(plugins.sass({includePaths: include})) 
-            .pipe(plugins.rename(targetFile))
-        .pipe(plugins.sourcemaps.write('.'))  
+        .pipe(plugins.concat(targetFile))
+        .pipe(plugins.uglify())
+        .pipe(gulp.dest(targetPath))
+        .pipe(plugins.gzip())
         .pipe(gulp.dest(targetPath))
     ;
 });
